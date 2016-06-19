@@ -46,7 +46,7 @@
 					{{post.title}}
 				</span>
 				<span>
-					<a href="#/posts/{{index}}">Comments</a>
+					<a href="#/posts/{{$index}}">Comments</a>
 				</span>
 				 - upvotes : {{post.upvotes}}
 			</div>
@@ -83,10 +83,10 @@
 			</div>
 			<div ng-repeat="comments in post.comments | orderBy:'-upvotes'">
 				<span class="fa fa-thumbs-o-up" ng-click="incrementUpvotes(comment)">
-					{{comment.upvotes}} by {{comment.author}}
+					{{comments.upvotes}} by {{comments.author}}
 				</span>
 				<span class="comment">
-					{{comment.body}}
+					{{comments.body}}
 				</span>
 			</div>
 		</script>
