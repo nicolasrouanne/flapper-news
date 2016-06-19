@@ -5,17 +5,17 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-
-var app = express();
-
 // connect to the mongodb instance
 var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/news');
+
 require('./models/Posts');
 require('./models/Comments');
 
-mongoose.connect('mongodb://localhost/news');
+// launch routes
+var routes = require('./routes/index');
+var users = require('./routes/users');
+var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
