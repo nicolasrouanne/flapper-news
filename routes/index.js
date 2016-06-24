@@ -48,7 +48,7 @@ router.get('/posts/:post', function(req, res) {
 	res.json(req.post);
 });
 
-/* Increment upvotes for a Post */
+/* PUT to increment upvotes for a Post */
 router.put('/posts/:post/upvote', function(req, res, next) {
 	req.post.upvote(function(err, post) {
 		if(err) { return next(err); }
@@ -57,5 +57,23 @@ router.put('/posts/:post/upvote', function(req, res, next) {
 	});
 });
 
+/* POST a comment on a post */
+router.post('/posts/:post/comments', function(req, res, next) {
+	var comment = new Comment(req.body);
+	comment.post = req.post;
+
+	// Save the comment in comment object
+	comment.save(function(err, comment) {
+		if(err) { return next(err); }
+
+		// Save the comment in post object
+		req.post.comments.push(comment);
+		req.post.save(function(err, post) {
+			if(err) { return next(err); }
+
+			res.json(comment);
+		});
+	});
+});
 
 module.exports = router;
