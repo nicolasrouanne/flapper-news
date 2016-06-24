@@ -43,9 +43,27 @@ router.param('post', function(req, res, next, id) {
 	});
 });
 
+/* Route for preloading Comments */
+router.param('comment', function(req, res, next, id) {
+	var query = Comment.findById(id);
+
+	query.exec(function(err, comment){
+		if(err) { return next(err); }
+		if(!comment) { return next(new Error('can\'t find Comment\n')); }
+	
+	req.comment = comment;
+	return next();
+	});
+});
+
+
 /* GET a specific Post */
-router.get('/posts/:post', function(req, res) {
-	res.json(req.post);
+router.get('/posts/:post', function(req, res, next) {
+	req.post.populate('comments', function(err, post) {
+		if(err) {return next(err); }
+
+		res.json(req.post);
+	});
 });
 
 /* PUT to increment upvotes for a Post */
@@ -75,5 +93,14 @@ router.post('/posts/:post/comments', function(req, res, next) {
 		});
 	});
 });
+
+/* PUT to increment upvotes for a Comment */
+router.put('/posts/:post/comments/:comment/upvote', function(req, res, next) {
+	req.comment.upvote(function(err, comment) {
+		if(err) { return next(err); }
+
+		res.json(comment);
+	});
+}); 
 
 module.exports = router;
