@@ -21,7 +21,12 @@ function($stateProvider, $urlRouterProvider) {
 		.state('posts', {
 			url: '/posts/{id}',
 			templateUrl: '/posts.html',
-			controller: 'PostsCtrl'
+			controller: 'PostsCtrl',
+			resolve: {
+				post: ['$stateParams', 'posts', function($stateParams, posts) {
+					return posts.get($stateParams.id);
+				}]
+			}
 		});
 
 	$urlRouterProvider.otherwise('home');
@@ -33,24 +38,34 @@ function($stateProvider, $urlRouterProvider) {
 		posts: []
 	};
 
+	// query the '/posts' route and bind a function when request returns
+	// get back a list and copy to posts object using angular.copy()
 	o.getAll = function() {
 		return $http.get('/posts').success(function(data){
 			angular.copy(data, o.posts);
 		})
-	}
+	};
 
+	// uses router.post in index.js to post a new Post model to mongoDB
+	// when $http gets success, it adds this post to the posts object in local factory
 	o.create = function(post) {
 		return $http.post('/posts', post).success(function(data){
 			o.posts.push(data);
 		})
-	}
+	};
 	
 	o.upvote = function(post) {
 		return $http.put('/posts/'+ post._id + '/upvote')
 			.success(function(data){
 				post.upvotes += 1;
 			});
-	}
+	};
+
+	o.get = function(id) {
+		return $http.get('/posts/' + id).then(function(res){
+			return res.data;
+		})
+	};
 
 	return o;
 }])
@@ -78,10 +93,10 @@ function($stateProvider, $urlRouterProvider) {
 
 .controller('PostsCtrl', [
 	'$scope',
-	'$stateParams',
 	'posts',
-	function($scope, $stateParams, posts) {
-		$scope.post = posts.posts[$stateParams.id];
+	'post',
+	function($scope, posts, post) {
+		$scope.post = post;
 
 		$scope.addComment = function(post) {
 			if ($scope.body === '') { return; }
