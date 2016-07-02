@@ -12,6 +12,11 @@ mongoose.connect('mongodb://localhost/news');
 require('./models/Posts');
 require('./models/Comments');
 
+// require passport for authentication
+var passport = require('passport');
+require('./models/Users');
+require('./config/passport');
+
 // launch routes
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -31,6 +36,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+
+// initialize passport (after the express.static middleware)
+app.use(passport.initialize());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
