@@ -67,6 +67,10 @@ function($stateProvider, $urlRouterProvider) {
 		})
 	};
 
+	o.addComment = function(id, comment) {
+		return $http.post('/posts/' + id + '/comments', comment);
+	};
+
 	return o;
 }])
 
@@ -98,14 +102,15 @@ function($stateProvider, $urlRouterProvider) {
 	function($scope, posts, post) {
 		$scope.post = post;
 
-		$scope.addComment = function(post) {
+		$scope.addComment = function() {
 			if ($scope.body === '') { return; }
-			$scope.post.comments.push({
+			posts.addComment(post._id, {
 				body: $scope.body,
 				author: 'user',
-				upvotes: 0
+			}).success(function(comment){
+				$scope.post.comments.push(comment);
 			});
 			$scope.body = '';
-		}
+		};
 
 }])
