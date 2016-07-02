@@ -1,26 +1,144 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'node', '/usr/local/bin/npm', 'start' ]
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'jsonwebtoken',
+1 verbose cli   '--save' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.37
-4 verbose run-script [ 'prestart', 'start', 'poststart' ]
-5 info prestart flapper-news@0.0.0
-6 info start flapper-news@0.0.0
-7 verbose unsafe-perm in lifecycle true
-8 info flapper-news@0.0.0 Failed to exec start script
-9 error flapper-news@0.0.0 start: `node ./bin/www`
-9 error Exit status 8
-10 error Failed at the flapper-news@0.0.0 start script.
-10 error This is most likely a problem with the flapper-news package,
-10 error not with npm itself.
-10 error Tell the author that this fails on your system:
-10 error     node ./bin/www
-10 error You can get their info via:
-10 error     npm owner ls flapper-news
-10 error There is likely additional logging output above.
-11 error System Darwin 15.5.0
-12 error command "node" "/usr/local/bin/npm" "start"
-13 error cwd /Users/nicolasrouanne/development/thinkster/flapper-news
-14 error node -v v0.10.37
-15 error npm -v 1.4.28
-16 error code ELIFECYCLE
-17 verbose exit [ 1, true ]
+4 verbose readDependencies using package.json deps
+5 verbose cache add [ 'jsonwebtoken', null ]
+6 verbose cache add name=undefined spec="jsonwebtoken" args=["jsonwebtoken",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'jsonwebtoken',
+7 verbose parsed url   path: 'jsonwebtoken',
+7 verbose parsed url   href: 'jsonwebtoken' }
+8 silly lockFile fb3a83e6-jsonwebtoken jsonwebtoken
+9 verbose lock jsonwebtoken /Users/nicolasrouanne/.npm/fb3a83e6-jsonwebtoken.lock
+10 silly lockFile fb3a83e6-jsonwebtoken jsonwebtoken
+11 silly lockFile fb3a83e6-jsonwebtoken jsonwebtoken
+12 verbose addNamed [ 'jsonwebtoken', '' ]
+13 verbose addNamed [ null, '*' ]
+14 silly lockFile 500149be-jsonwebtoken jsonwebtoken@
+15 verbose lock jsonwebtoken@ /Users/nicolasrouanne/.npm/500149be-jsonwebtoken.lock
+16 silly addNameRange { name: 'jsonwebtoken', range: '*', hasData: false }
+17 verbose request where is /jsonwebtoken
+18 verbose request registry https://registry.npmjs.org/
+19 verbose request id d26e847b28fe6359
+20 verbose url raw /jsonwebtoken
+21 verbose url resolving [ 'https://registry.npmjs.org/', './jsonwebtoken' ]
+22 verbose url resolved https://registry.npmjs.org/jsonwebtoken
+23 verbose request where is https://registry.npmjs.org/jsonwebtoken
+24 info trying registry request attempt 1 at 14:34:55
+25 verbose etag "9XKGCCI3LHQNCIRNK6LDH7S5X"
+26 http GET https://registry.npmjs.org/jsonwebtoken
+27 http 304 https://registry.npmjs.org/jsonwebtoken
+28 silly registry.get cb [ 304,
+28 silly registry.get   { date: 'Sat, 02 Jul 2016 12:34:59 GMT',
+28 silly registry.get     via: '1.1 varnish',
+28 silly registry.get     'cache-control': 'max-age=300',
+28 silly registry.get     etag: '"9XKGCCI3LHQNCIRNK6LDH7S5X"',
+28 silly registry.get     age: '152',
+28 silly registry.get     connection: 'keep-alive',
+28 silly registry.get     'x-served-by': 'cache-lcy1120-LCY',
+28 silly registry.get     'x-cache': 'HIT',
+28 silly registry.get     'x-cache-hits': '163',
+28 silly registry.get     'x-timer': 'S1467462899.943919,VS0,VE0',
+28 silly registry.get     vary: 'Accept-Encoding' } ]
+29 verbose etag https://registry.npmjs.org/jsonwebtoken from cache
+30 silly addNameRange number 2 { name: 'jsonwebtoken', range: '*', hasData: true }
+31 silly addNameRange versions [ 'jsonwebtoken',
+31 silly addNameRange   [ '0.1.0',
+31 silly addNameRange     '0.2.0',
+31 silly addNameRange     '0.3.0',
+31 silly addNameRange     '0.4.0',
+31 silly addNameRange     '0.4.1',
+31 silly addNameRange     '1.0.0',
+31 silly addNameRange     '1.0.2',
+31 silly addNameRange     '1.1.0',
+31 silly addNameRange     '1.1.1',
+31 silly addNameRange     '1.1.2',
+31 silly addNameRange     '1.2.0',
+31 silly addNameRange     '1.3.0',
+31 silly addNameRange     '2.0.0',
+31 silly addNameRange     '3.0.0',
+31 silly addNameRange     '3.1.0',
+31 silly addNameRange     '3.1.1',
+31 silly addNameRange     '3.2.0',
+31 silly addNameRange     '3.2.1',
+31 silly addNameRange     '3.2.2',
+31 silly addNameRange     '4.0.0',
+31 silly addNameRange     '4.1.0',
+31 silly addNameRange     '4.2.0',
+31 silly addNameRange     '4.2.1',
+31 silly addNameRange     '4.2.2',
+31 silly addNameRange     '5.0.0',
+31 silly addNameRange     '5.0.1',
+31 silly addNameRange     '5.0.2',
+31 silly addNameRange     '5.0.3',
+31 silly addNameRange     '5.0.4',
+31 silly addNameRange     '5.0.5',
+31 silly addNameRange     '5.1.0',
+31 silly addNameRange     '5.2.0',
+31 silly addNameRange     '5.3.1',
+31 silly addNameRange     '5.4.0',
+31 silly addNameRange     '5.4.1',
+31 silly addNameRange     '5.5.0',
+31 silly addNameRange     '5.5.1',
+31 silly addNameRange     '5.5.2',
+31 silly addNameRange     '5.5.3',
+31 silly addNameRange     '5.5.4',
+31 silly addNameRange     '5.6.0',
+31 silly addNameRange     '5.6.2',
+31 silly addNameRange     '5.7.0',
+31 silly addNameRange     '6.0.0',
+31 silly addNameRange     '6.0.1',
+31 silly addNameRange     '6.1.0',
+31 silly addNameRange     '6.1.1',
+31 silly addNameRange     '6.1.2',
+31 silly addNameRange     '6.2.0',
+31 silly addNameRange     '7.0.0',
+31 silly addNameRange     '7.0.1' ] ]
+32 verbose addNamed [ 'jsonwebtoken', '7.0.1' ]
+33 verbose addNamed [ '7.0.1', '7.0.1' ]
+34 silly lockFile 69efb153-jsonwebtoken-7-0-1 jsonwebtoken@7.0.1
+35 verbose lock jsonwebtoken@7.0.1 /Users/nicolasrouanne/.npm/69efb153-jsonwebtoken-7-0-1.lock
+36 silly lockFile 38cbe241-nwebtoken-jsonwebtoken-7-0-1-tgz https://registry.npmjs.org/jsonwebtoken/-/jsonwebtoken-7.0.1.tgz
+37 verbose lock https://registry.npmjs.org/jsonwebtoken/-/jsonwebtoken-7.0.1.tgz /Users/nicolasrouanne/.npm/38cbe241-nwebtoken-jsonwebtoken-7-0-1-tgz.lock
+38 verbose addRemoteTarball [ 'https://registry.npmjs.org/jsonwebtoken/-/jsonwebtoken-7.0.1.tgz',
+38 verbose addRemoteTarball   '4aba9fea3552c8f1d415d4117ab80aa09d6af55e' ]
+39 info retry fetch attempt 1 at 14:34:59
+40 verbose fetch to= /var/folders/00/gjy5bd8d2_zgfrhbmgg1lptw0000gn/T/npm-6909-s_958iIZ/registry.npmjs.org/jsonwebtoken/-/jsonwebtoken-7.0.1.tgz
+41 http GET https://registry.npmjs.org/jsonwebtoken/-/jsonwebtoken-7.0.1.tgz
+42 http 200 https://registry.npmjs.org/jsonwebtoken/-/jsonwebtoken-7.0.1.tgz
+43 silly lockFile 38cbe241-nwebtoken-jsonwebtoken-7-0-1-tgz https://registry.npmjs.org/jsonwebtoken/-/jsonwebtoken-7.0.1.tgz
+44 silly lockFile 38cbe241-nwebtoken-jsonwebtoken-7-0-1-tgz https://registry.npmjs.org/jsonwebtoken/-/jsonwebtoken-7.0.1.tgz
+45 silly lockFile 69efb153-jsonwebtoken-7-0-1 jsonwebtoken@7.0.1
+46 silly lockFile 69efb153-jsonwebtoken-7-0-1 jsonwebtoken@7.0.1
+47 silly lockFile 500149be-jsonwebtoken jsonwebtoken@
+48 silly lockFile 500149be-jsonwebtoken jsonwebtoken@
+49 error Error: EACCES, mkdir '/Users/nicolasrouanne/.npm/jsonwebtoken/7.0.1'
+49 error  { [Error: EACCES, mkdir '/Users/nicolasrouanne/.npm/jsonwebtoken/7.0.1']
+49 error   errno: 3,
+49 error   code: 'EACCES',
+49 error   path: '/Users/nicolasrouanne/.npm/jsonwebtoken/7.0.1',
+49 error   parent: 'flapper-news' }
+50 error Please try running this command again as root/Administrator.
+51 error System Darwin 15.5.0
+52 error command "node" "/usr/local/bin/npm" "install" "jsonwebtoken" "--save"
+53 error cwd /Users/nicolasrouanne/development/thinkster/flapper-news
+54 error node -v v0.10.37
+55 error npm -v 1.4.28
+56 error path /Users/nicolasrouanne/.npm/jsonwebtoken/7.0.1
+57 error code EACCES
+58 error errno 3
+59 error stack Error: EACCES, mkdir '/Users/nicolasrouanne/.npm/jsonwebtoken/7.0.1'
+60 verbose exit [ 3, true ]
