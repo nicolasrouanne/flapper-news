@@ -108,15 +108,24 @@
 			</div>
 
 			<div ng-show="error" class="alert alert-danger row">
-				<span>{{ error.message }}</span>
+				<span>{{error.message}}</span>
 			</div>
 			<form ng-submit="register()" class="margin-top">
 				<h3>Register</h3>
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Username" ng-model="user.username"></input>	
-					<input type="password" class="form-control" placeholder="Password" ng-model="user.password"></input>
-					<button type="submit" class="btn btn-primary">Register</button>
+					<input type="text" 
+						class="form-control" 
+						placeholder="Username" 
+						ng-model="user.username"></input>	
 				</div>
+				<div class="form-group">
+					<input type="password" 
+					class="form-control" 
+					placeholder="Password" 
+					ng-model="user.password"></input>
+				</div>
+				<button type="submit" class="btn btn-primary">Register</button>
+				
 			</form>
 		</script>
 
@@ -132,10 +141,18 @@
 			<form ng-submit="logIn()" class="margin-top">
 				<h3>Log In</h3>
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Username" ng-model="user.username"></input>	
-					<input type="password" class="form-control" placeholder="Password" ng-model="user.password"></input>
-					<button type="submit" class="btn btn-primary">Log In</button>
+					<input type="text" 
+						class="form-control" 
+						placeholder="Username" 
+						ng-model="user.username"></input>	
 				</div>
+				<div class="form-group">
+					<input type="password" 
+					class="form-control" 
+					placeholder="Password" 
+					ng-model="user.password"></input>
+				</div>
+				<button type="submit" class="btn btn-primary">Log In</button>
 			</form>
 		</script>
 
