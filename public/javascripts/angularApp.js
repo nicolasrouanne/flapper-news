@@ -15,9 +15,7 @@ function($stateProvider, $urlRouterProvider) {
 					return posts.getAll();
 				}]
 			}
-		});
-	
-	$stateProvider
+		})
 		.state('posts', {
 			url: '/posts/{id}',
 			templateUrl: '/posts.html',
@@ -27,6 +25,26 @@ function($stateProvider, $urlRouterProvider) {
 					return posts.get($stateParams.id);
 				}]
 			}
+		})
+		.state('register', {
+			url: '/register',
+			templateUrl: '/register.html',
+			controller: 'AuthCtrl',
+			onEnter: ['$state', 'auth', function($state, auth){
+				if(auth.isLoggedIn()) {
+					$state.go('home');
+				}
+			}]
+		})
+		.state('login', {
+				url: '/login',
+				templateUrl: '/login.html',
+				controller: 'AuthCtrl',
+				onEnter: ['$state', 'auth', function($state, auth){
+					if(auth.isLoggedIn()) {
+						$state.go('home');
+					}
+				}]
 		});
 
 	$urlRouterProvider.otherwise('home');
