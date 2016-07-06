@@ -193,7 +193,6 @@ function($stateProvider, $urlRouterProvider) {
 		$scope.incrementUpvotes = function(comment) {
 			posts.upvoteComment(post, comment);
 		};
-
 }])
 
 .controller('AuthCtrl', [
@@ -218,4 +217,13 @@ function($stateProvider, $urlRouterProvider) {
 				$state.go('home');
 			});
 		};
+}])
+
+.controller('NavCtrl', [
+	'$scope',
+	'auth',
+	function($scope, auth) {
+		$scope.isLoggedIn = auth.isLoggedIn;
+		$scope.currentUser = auth.currentUser;
+		$scope.logOut = auth.logOut;
 }])
