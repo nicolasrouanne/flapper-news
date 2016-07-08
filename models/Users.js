@@ -27,13 +27,13 @@ UserSchema.methods.generateJWT = function() {
 	var exp = new Date(today);
 	exp.setDate(today.getDate() + 60);
 
-	// careful: secret variable of jwt is hardcoded
-	// TODO: replace it with an environment variable
+	// Secret variable of jwt is stored in an environment variable
+	// SECRET_JWT defined in .env file
 	return jwt.sign({
 		_id: this._id,
 		username: this.username,
 		exp: parseInt(exp.getTime() / 1000)
-	}, 'SECRET');
+	}, process.env.SECRET_JWT);
 };
 
 mongoose.model('User', UserSchema);

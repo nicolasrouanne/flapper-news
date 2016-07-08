@@ -6,7 +6,7 @@ var jwt = require('express-jwt');
 
 // userProperty specifies which property on req to put the payload from the tokens
 // default value for passport is 'user'. Renaiming it in 'payload' avoids confusion
-var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
+var auth = jwt({secret: process.env.SECRET_JWT, userProperty: 'payload'});
 
 var Post = mongoose.model('Post');
 var Comment = mongoose.model('Comment');
