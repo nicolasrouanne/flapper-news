@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 // connect to the mongodb instance
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/news');
+mongoose.connect('mongodb://heroku_vzncdqxz:VAzgo9gIw?/`OP2n31,d@ds017175.mlab.com:17175/heroku_vzncdqxz');
 
 require('./models/Posts');
 require('./models/Comments');
