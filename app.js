@@ -1,3 +1,7 @@
+// dotenv packages allows variable in .env to be available
+// as process.env variables
+require('dotenv').config();
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -7,7 +11,7 @@ var bodyParser = require('body-parser');
 
 // connect to the mongodb instance
 var mongoose = require('mongoose');
-mongoose.connect('MONGODB_URI');
+mongoose.connect(process.env.MONGODB_URI);
 
 require('./models/Posts');
 require('./models/Comments');
