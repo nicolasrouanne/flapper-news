@@ -125,8 +125,16 @@ function($stateProvider, $urlRouterProvider) {
 		if(token) {
 			var payload = JSON.parse($window.atob(token.split('.')[1]));
 
+			//console.log("isLoggedIn = " + payload.exp > (Date.now() / 1000));
+			//console.log("payload.exp = " + payload.exp);
+			//console.log("Date.now() = " + Date.now());
+
+			//console.log("token = " + token);
+			//console.log("$window.atob = " + $window.atob(token.split('.')[1]));
+
 			return payload.exp > Date.now() / 1000;
 		} else {
+			console.log("isLoggedIn = false");
 			return false;
 		}
 	};
@@ -223,7 +231,7 @@ function($stateProvider, $urlRouterProvider) {
 		};
 
 		$scope.logIn = function() {
-			auth.login($scope.user).error(function(error){
+			auth.logIn($scope.user).error(function(error){
 				$scope.error = error;
 			}).then(function(){
 				$state.go('home');
