@@ -54,14 +54,20 @@
 				<span ng-hide="post.link" class="left-medium-label">
 					{{post.title}}
 				</span>
+				<span ng-show="post.author">
+					posted by <a>{{post.author}}</a> |
+				</span>
 				<span>
 					<a href="#/posts/{{post._id}}">Comments</a>
 				</span>
 				 - upvotes : {{post.upvotes}}
 			</div>
 			
+			<div ng-hide="isLoggedIn()">
+				<h3>You need to <a href="/#/login">Log in</a> or <a href="/#/register">Register</a> before you can add a post.</h3>
+			</div>
 
-			<form ng-submit="addPost()" class="margin-top">
+			<form ng-submit="addPost()" ng-show="isLoggedIn()" class="margin-top">
 			<h3>Add a new post</h3>
 				<div class="form-group">
 					<input type="text" 
@@ -100,7 +106,11 @@
 				</span>
 			</div>
 
-			<form ng-submit="addComment()" class="margin-top">
+			<div ng-hide="isLoggedIn()">
+				<h3>You need to <a href="/#/login">Log in</a> or <a href="/#/register">Register</a> before you can comment.</h3>
+			</div>
+
+			<form ng-submit="addComment()" ng-show="isLoggedIn()" class="margin-top">
 				<h3>Add a new comment</h3>
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Comment" ng-model="body"></input>

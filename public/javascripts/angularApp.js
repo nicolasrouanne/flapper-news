@@ -51,7 +51,7 @@ function($stateProvider, $urlRouterProvider) {
 }])
 
 
-.factory('posts', ['$http', function($http){
+.factory('posts', ['$http', 'auth', function($http, auth){
 	var o = {
 		posts: []
 	};
@@ -67,13 +67,17 @@ function($stateProvider, $urlRouterProvider) {
 	// uses router.post in index.js to post a new Post model to mongoDB
 	// when $http gets success, it adds this post to the posts object in local factory
 	o.create = function(post) {
-		return $http.post('/posts', post).success(function(data){
+		return $http.post('/posts', post, {
+			headers: {Authorization: 'Bearer' + auth.getToken()}
+		}).success(function(data){
 			o.posts.push(data);
 		})
 	};
 	
 	o.upvote = function(post) {
-		return $http.put('/posts/'+ post._id + '/upvote')
+		return $http.put('/posts/'+ post._id + '/upvote', null, {
+			headers: {Authorization: 'Bearer' + auth.getToken()}
+		})
 			.success(function(data){
 				post.upvotes += 1;
 			});
@@ -86,11 +90,15 @@ function($stateProvider, $urlRouterProvider) {
 	};
 
 	o.addComment = function(id, comment) {
-		return $http.post('/posts/' + id + '/comments', comment);
+		return $http.post('/posts/' + id + '/comments', comment, {
+			headers: {Authorization: 'Bearer' + auth.getToken()}
+		});
 	};
 
 	o.upvoteComment = function(post, comment) {
-		return $http.put('/posts/' + post._id + '/comments/' + comment._id + '/upvote')
+		return $http.put('/posts/' + post._id + '/comments/' + comment._id + '/upvote', null, {
+			headers: {Authorization: 'Bearer' + auth.getToken()}
+		})
 			.success(function(data){
 				comment.upvotes += 1;
 			});
@@ -107,7 +115,7 @@ function($stateProvider, $urlRouterProvider) {
 		$window.localStorage['flapper-news-token'] = token;
 	};
 
-	auth.getToken = function(token) {
+	auth.getToken = function() {
 		return $window.localStorage['flapper-news-token'];
 	};
 
@@ -154,8 +162,10 @@ function($stateProvider, $urlRouterProvider) {
 .controller('MainCtrl', [
 	'$scope',
 	'posts',
-	function($scope, posts) {
+	'auth',
+	function($scope, posts, auth) {
 		$scope.posts = posts.posts;
+		$scope.isLoggedIn = auth.isLoggedIn;
 
 		$scope.addPost = function() {
 			if (!$scope.title | $scope.title === '') {return; }
@@ -176,8 +186,10 @@ function($stateProvider, $urlRouterProvider) {
 	'$scope',
 	'posts',
 	'post',
-	function($scope, posts, post) {
+	'auth',
+	function($scope, posts, post, auth) {
 		$scope.post = post;
+		$scope.isLoggedIn = auth.isLoggedIn;
 
 		$scope.addComment = function() {
 			if ($scope.body === '') { return; }
