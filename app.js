@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');
 
 // connect to the mongodb instance
 var mongoose = require('mongoose');
-mongoose.connect(MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI);
 
 require('./models/Posts');
 require('./models/Comments');
