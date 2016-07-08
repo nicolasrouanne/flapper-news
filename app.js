@@ -1,6 +1,6 @@
 // dotenv packages allows variable in .env to be available
 // as process.env variables
-//require('dotenv').config();
+require('dotenv').config();
 
 var express = require('express');
 var path = require('path');
