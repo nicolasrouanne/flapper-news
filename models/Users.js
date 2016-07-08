@@ -27,8 +27,6 @@ UserSchema.methods.generateJWT = function() {
 	var exp = new Date(today);
 	exp.setDate(today.getDate() + 60);
 
-	console.log("exp =" + exp);
-
 	// careful: secret variable of jwt is hardcoded
 	// TODO: replace it with an environment variable
 	return jwt.sign({
